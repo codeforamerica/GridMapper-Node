@@ -48,22 +48,6 @@ function init(rep){
     lastSquares[s] *= 1;
   }
 
-  // add the grid-selecting dropdown box
-  var gridSelect = document.createElement("select");
-  gridSelect.id = "selectSquare";
-  gridSelect.onchange = function(){
-    setSquare(this);
-  };
-  var noneOpt = document.createElement("option");
-  noneOpt.value="none";
-  noneOpt.selected="selected";
-  noneOpt.innerHTML = "None Selected";
-  gridSelect.appendChild(noneOpt);
-  $("#insertDropdownBox")[0].appendChild(gridSelect);
-
-  // hide modal archive check window
-  //$("#archiveCheck").modal({ });
-
   /* create a tile layer */
   var cloudmadeUrl = response.tilexyz;
   cloudmadeAttribution = response.tilecopyright;
@@ -157,12 +141,6 @@ function init(rep){
           continue;
         }
 
-        /* add squares to a dropdown */
-        var sq = document.createElement("option");
-        sq.value = i + "," + j;
-        sq.innerHTML = squareName(i,j);
-        $("#selectSquare")[0].appendChild(sq);
-
         /* create and add a grid square */
         var corners = [
           new L.LatLng( gridN - j * gridRowHeight, gridW + i * gridColumnWidth ),
@@ -191,12 +169,6 @@ function bindGrid(gridSquare, i, j){
     /* enable grid square data controls */
     activeGrid = [i, j];
     activeGridLayer = gridSquare;
-    //$("square_name").innerHTML = squareName(i,j);
-    $("#wind_level")[0].disabled = false;
-    $("#wind_level")[0].value = gridSquares[i][j].wind;
-    $("#flood_level")[0].disabled = false;
-    $("#flood_level")[0].value = gridSquares[i][j].flood;
-    $("#selectSquare")[0].value = i + "," + j;
 
     /* show popup in center of grid square */
     var popup = new L.Popup();
@@ -250,11 +222,6 @@ function setSquare(selector){
   /* enable grid square data controls */
   activeGrid = [i, j];
   activeGridLayer = gridSquare;
-  //$("square_name").innerHTML = squareName(i,j);
-  $("#wind_level")[0].disabled = false;
-  $("#wind_level")[0].value = gridSquares[i][j].wind;
-  $("#flood_level")[0].disabled = false;
-  $("#flood_level")[0].value = gridSquares[i][j].flood;
 
   /* show popup in center of grid square */
   var popup = new L.Popup();
@@ -388,30 +355,4 @@ function toggle(chk){
     }
   }
 }
-function archiveMap(){
-  // check with Bootstrap's modal window
-  $('#archiveID')[0].innerHTML = response.gridID;
-  $('#archiveCheck').modal('show');
-}
-function archiveMapConfirm(){
-  $('#archiveCheck').modal('hide');
-  var s = document.createElement('script');
-  s.type = "text/javascript";
-  s.src = "/gridtest/auth?action=create";
-  s.onload = function(){
-    for(var i=0; i<gridColumns; i++){
-      for(var j=0; j<gridRows; j++){
-        try{
-          gridSquares[i][j].layer.setStyle({ fillOpacity: 0.6, fillColor: statusToColor[0] });
-          gridSquares[i][j].wind = 0;
-          gridSquares[i][j].flood = 0;
-        }
-        catch(e){
-        }
-      }
-    }
-  };
-  document.body.appendChild(s);
-}
-
 function gup(nm){nm=nm.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");var rxS="[\\?&]"+nm+"=([^&#]*)";var rx=new RegExp(rxS);var rs=rx.exec(window.location.href);if(!rs){return null;}else{return rs[1];}}

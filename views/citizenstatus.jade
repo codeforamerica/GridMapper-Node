@@ -1,0 +1,46 @@
+head
+  meta(charset='utf-8')
+  title #{title}
+  link(rel="stylesheet", href="/stylesheets/leaflet.css")
+  link(rel="stylesheet", href="/stylesheets/leaflet.ie.css")
+  script(type="text/javascript", src="/scripts/leaflet.js")
+  script(type="text/javascript", src="/scripts/jquery.min.js")
+  script(type="text/javascript", src="/scripts/bootstrap-dropdown.js")
+  script(type="text/javascript", src="/scripts/gridmapcitizen.js")
+  link(href="/stylesheets/bootstrap-2.css", rel="stylesheet")
+  link(href="/stylesheets/style.css", rel="stylesheet")
+
+body
+  div#column
+    .clear
+    #branding
+      .knol(style="width:100%;")
+        img(src="#{mapUserPic}", style="margin-left:30%;margin-right:30%;width:40%;")
+
+    .clear
+    
+    #explain
+      h2 Switch Map
+
+      .btn-group
+        a.btn.dropdown-toggle(data-toggle="dropdown", href="#")
+          span#layerLabel Wind Layer
+          span.caret
+
+        ul.dropdown-menu
+          li
+            a#windButton(href="#", onclick="loadWindMap()") Wind Layer
+          li
+            a#floodButton(href="#", onclick="loadFloodMap()") Flood Layer
+          li
+            a#clearButton(href="#", onclick="clearMap()") Hide Grid
+
+      br
+      span.label.label-info County
+      input#countyLayer(type="checkbox", onclick="toggle(this)", checked="checked")
+      br
+      span.label.label-info Wards
+      input#wardLayer(type="checkbox", onclick="toggle(this)", checked="checked")
+
+  div#map-container
+    #map
