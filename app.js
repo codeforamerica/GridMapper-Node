@@ -133,8 +133,10 @@ var init = exports.init = function (config) {
     }
     else if(req.query['action'] == 'set'){
       gridmap.GridMap.findById(req.query["id"], function(err, myGrid){
-        myGrid.text[1 * req.query["col"]][ 1 * req.query["row"]] = req.query["txt"].split(",");
         myGrid.updated = new Date();
+        myGrid.text[1 * req.query["col"]][ 1 * req.query["row"]][0] = req.query["txt"].split(",")[0];
+        myGrid.text[1 * req.query["col"]][ 1 * req.query["row"]][1] = req.query["txt"].split(",")[1];
+        
         myGrid.save(function(err){
           if(err){
             res.send(err);
