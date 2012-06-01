@@ -52,7 +52,12 @@ body
 
       div#squareedit
         h2 Update Square
-
+        .knol
+          span.label.label-info Name
+          br
+          select#selectSquare(onchange="setSquare(this)")
+            option(value="none" selected="selected") None Selected
+            option(value="none" selected="selected" style="display:none") None
             
         .knol
           span.label.label-info Wind
