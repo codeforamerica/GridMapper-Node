@@ -92,6 +92,7 @@ var init = exports.init = function (config) {
         if(!err){
           var firstReport = true;
           archives.forEach(function(archive){
+            var mydate = archive.updated; 
             if(typeof mydate == "undefined"){
               mydate = "_";
             }
