@@ -10,6 +10,7 @@ var auth = require('./auth')
     , mongoStore = require('connect-mongo')(express)
     , routes = require('./routes')
     , middleware = require('./middleware')
+    , gridmap = require('./gridmap')
     ;
 
 var HOUR_IN_MILLISECONDS = 3600000;
@@ -99,12 +100,14 @@ var init = exports.init = function (config) {
         gridded = myGrid.text.split(' ],')
         gridded[ 1 * req.query["col"] ] = re.query["txt"];
         myGrid.text = gridded.join(' ],');
+        myGrid.updated = new Date();
         myGrid.save(function(err){ });
       });
     }
     else if(req.query['action'] == 'create'){
       var grid = new gridmap.GridMap({
-        title: "GridMap"
+        title: "GridMap",
+        updated: new Date(),
         text: '[ [0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[ 0,0 ] ],
 [ [0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[ 0,0 ] ],
 [ [0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[ 0,0 ] ],
