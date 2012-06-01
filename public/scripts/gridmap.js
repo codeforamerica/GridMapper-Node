@@ -350,7 +350,7 @@ function reportLevel(selecting){
   }
   var s = document.createElement('script');
   s.type = "text/javascript";
-  s.src = "http://mapmeld.appspot.com/gridtest?action=set&id=" + gridID + "&col=" + i + "&txt=" + gridString;
+  s.src = "/gridtest?action=set&id=" + gridID + "&col=" + i + "&txt=" + gridString;
   document.body.appendChild(s);
 }
 
@@ -386,7 +386,7 @@ function archiveMapConfirm(){
   $('#archiveCheck').modal('hide');
   var s = document.createElement('script');
   s.type = "text/javascript";
-  s.src = "http://mapmeld.appspot.com/gridtest?action=create";
+  s.src = "/gridtest?action=create";
   s.onload = function(){
     for(var i=0; i<gridColumns; i++){
       for(var j=0; j<gridRows; j++){

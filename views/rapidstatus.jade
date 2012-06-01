@@ -4,7 +4,7 @@ head
   link(rel="stylesheet", href="/stylesheets/leaflet.css")
   link(rel="stylesheet", href="/stylesheets/leaflet.ie.css")
   script(type="text/javascript", src="/scripts/leaflet.js")
-  script(type="text/javascript", src="http://mapmeld.appspot.com/gridtest?action=read&id=#{archiveID}")
+  script(type="text/javascript", src="/gridtest?action=read&id=#{archiveID}")
   script(type="text/javascript", src="/scripts/jquery.min.js")
   script(type="text/javascript", src="/scripts/bootstrap-modal.js")
   script(type="text/javascript", src="/scripts/bootstrap-dropdown.js")
@@ -87,7 +87,7 @@ body
       span ?
       br
       br
-      a(href="http://mapmeld.appspot.com/gridtest?action=archive", target="_blank") More Archives
+      a(href="/gridtest?action=archive", target="_blank") More Archives
      
     .modal-footer
       a.btn.btn-primary(href="#", onclick="archiveMapConfirm()") Archive/Clear
