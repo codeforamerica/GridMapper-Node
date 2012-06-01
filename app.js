@@ -86,7 +86,7 @@ var init = exports.init = function (config) {
     if(req.query['action'] == 'archive'){
       archiveList = '<!DOCTYPE html>\n<html><body>'
       var query = gridmap.GridMap.find();
-      query.sort([['updated', 'descending']]);
+      query.desc('updated');
       query.limit(20);
       query.exec(function(err, archives){
         if(!err){
