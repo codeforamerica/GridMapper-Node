@@ -45,6 +45,7 @@ function init(rep){
 
   // add the grid-selecting dropdown box
   var gridSelect = document.createElement("select");
+  gridSelect.id = "selectSquare";
   gridSelect.onchange = function(){
     setSquare(this);
   };
