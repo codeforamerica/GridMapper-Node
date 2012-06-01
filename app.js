@@ -136,7 +136,12 @@ var init = exports.init = function (config) {
         myGrid.text[1 * req.query["col"]][ 1 * req.query["row"]] = req.query["txt"].split(",");
         myGrid.updated = new Date();
         myGrid.save(function(err){
-          res.send("got it!");
+          if(err){
+            res.send(err);
+          }
+          else{
+            res.send("got it!");
+          }
         });
       });
     }
