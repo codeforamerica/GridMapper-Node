@@ -22,7 +22,23 @@ body
     .clear
     
     #explain
+      h2 Switch Map
+      a#windButton.btn.disabled.blueborder(href="#", onclick="loadWindMap()") Wind
+      a#floodButton.btn(href="#", onclick="loadFloodMap()") Flood
+      a#clearButton.btn(href="#", onclick="clearMap()") Blank
 
+      .btn-group
+        a.btn.dropdown-toggle(data-toggle="dropdown", href="#")
+          span#layerLabel Wind Layer
+          span.caret
+
+        ul.dropdown-menu
+          li
+            a#windButton(href="#", onclick="loadWindMap()") Wind Layer
+          li
+            a#floodButton(href="#", onclick="loadFloodMap()") Flood Layer
+          li
+            a#clearButton(href="#", onclick="clearMap()") Hide Grid
 
       br
       span.label.label-info County
@@ -34,33 +50,7 @@ body
       br
       a#clearButton.btn(href="#", onclick="archiveMap()") Archive/Clear
 
-      div#squareedit
-        h2 Update Square
-        p
-          span.label.label-info Name
-          br
-          select#selectSquare(onchange="setSquare(this)")
-            option(value="none" selected="selected") None Selected
-            
-        p
-          span.label.label-info Wind
-          br
-          select#wind_level(disabled="disabled", onchange="reportLevel(this)")
-            option(value="0", selected="selected") 0- No damage
-            option(value="1") 1- Minor
-            option(value="2") 2- Moderate
-            option(value="3") 3- Severe
-            option(value="4") 4- Catastrophic
-            
-        p
-          span.label.label-info Flood
-          br
-          select#flood_level(disabled="disabled", onchange="reportLevel(this)")
-            option(value="0", selected="selected") 0- No damage
-            option(value="1") 1- Minor
-            option(value="2") 2- Moderate
-            option(value="3") 3- Severe
-            option(value="4") 4- Catastrophic
+
 
   div#map-container
     #map
