@@ -3,7 +3,7 @@ var mongoose = require('mongoose'),
   Schema = mongoose.Schema;
 
 var GridMapSchema = new Schema({
-  text: String,
+  text: Array,
   name: String,
   updated: Date
 });

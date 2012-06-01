@@ -348,14 +348,10 @@ function reportLevel(selecting){
   map.openPopup(popup);
   
   /* report to database */
-  var gridString = '[';
-  for(var row=0;row<gridRows;row++){
-    if(row!=0){ gridString += ','; }
-  	gridString += '[' + gridSquares[i][row].wind + ',' + gridSquares[i][row].flood + ']';
-  }
+  var gridString = gridSquares[i][row].wind + ',' + gridSquares[i][row].flood;
   var s = document.createElement('script');
   s.type = "text/javascript";
-  s.src = "/gridtest?action=set&id=" + response.gridID + "&col=" + i + "&txt=" + gridString;
+  s.src = "/gridtest?action=set&id=" + response.gridID + "&col=" + i + "&row=" + j + "&txt=" + gridString;
   document.body.appendChild(s);
 }
 
