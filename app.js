@@ -94,7 +94,7 @@ var init = exports.init = function (config) {
           for(archive in archives){
             var mydate = archive.updated;
             if(typeof mydate == "undefined"){
-              archive.updated = "_";
+              mydate = "_";
             }
             if(firstReport){
               archiveList += '<a href="/?archiveid=' + archive._id + '">Latest - Started ' + mydate + '</a><br/><br/>';
