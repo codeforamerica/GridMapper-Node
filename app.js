@@ -92,11 +92,11 @@ var init = exports.init = function (config) {
         var firstReport = true;
         for(archive in archives){
           if(firstReport){
-            archiveList += '<a href="/?archiveid=' + archive._id + '">Latest - Started ' + archive.updated + '</a><br/><br/>';
+            archiveList += '<a href="/auth?archiveid=' + archive._id + '">Latest - Started ' + archive.updated.toUTCString() + '</a><br/><br/>';
             firstReport = false;
           }
           else{
-            archiveList += '<a href="/?archiveid=' + archive._id + '">Created ' + archive.updated + '</a><br/><br/>';
+            archiveList += '<a href="/auth?archiveid=' + archive._id + '">Created ' + archive.updated.toUTCString() + '</a><br/><br/>';
           }
         }
         archiveList += "</body></html>";
