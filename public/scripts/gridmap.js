@@ -28,7 +28,12 @@ var excluded = ['T15'];
 var wards, county, baseIcon, rowMark, colMark, response;
 
 $(document).ready(function(){
-  $.getJSON("/gridtest?action=read&id=" + gup("archiveid"), init);
+  if(gup("archiveid")){
+    $.getJSON("/gridtest?action=read&id=" + gup("archiveid"), init);
+  }
+  else{
+    $.getJSON("/gridtest?action=read", init);  
+  }
   //init();
 });
 

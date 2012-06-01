@@ -60,11 +60,11 @@ var init = exports.init = function (config) {
         var firstReport = true;
         for(archive in archives){
           if(firstReport){
-            archiveList += '<a href="/archive/' + archive._id + '">Latest - Started ' + archive.updated + '</a><br/><br/>';
+            archiveList += '<a href="/?archiveid=' + archive._id + '">Latest - Started ' + archive.updated + '</a><br/><br/>';
             firstReport = false;
           }
           else{
-            archiveList += '/archive/' + archive._id + '">Created ' + archive.updated + '</a><br/><br/>';
+            archiveList += '/?archiveid=' + archive._id + '">Created ' + archive.updated + '</a><br/><br/>';
           }
         }
         archiveList += "</body></html>";
