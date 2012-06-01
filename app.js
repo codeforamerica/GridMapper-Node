@@ -85,24 +85,28 @@ var init = exports.init = function (config) {
   app.get('/gridtest', function(req,res){
     if(req.query['action'] == 'archive'){
       archiveList = '<!DOCTYPE html>\n<html><body>'
-      var query = gridmap.GridMap.find({});
+      var query = gridmap.GridMap.find({ 'title': 'GridMap' });
       query.desc('updated');
       query.limit(20);
       query.exec(function(err, archives){
-        var firstReport = true;
-        for(archive in archives){
-          if(firstReport){
-            archiveList += '<a href="/auth?archiveid=' + archive._id + '">Latest - Started ' + archive.updated.toUTCString() + '</a><br/><br/>';
-            firstReport = false;
+        if(!err){
+          var firstReport = true;
+          for(archive in archives){
+            if(firstReport){
+              archiveList += '<a href="/auth?archiveid=' + archive._id + '">Latest - Started ' + archive.updated.toUTCString() + '</a><br/><br/>';
+              firstReport = false;
+            }
+            else{
+              archiveList += '<a href="/auth?archiveid=' + archive._id + '">Created ' + archive.updated.toUTCString() + '</a><br/><br/>';
+            }
           }
-          else{
-            archiveList += '<a href="/auth?archiveid=' + archive._id + '">Created ' + archive.updated.toUTCString() + '</a><br/><br/>';
-          }
-        }
-        archiveList += "</body></html>";
-        res.send( archiveList );
-      });
-
+          archiveList += "</body></html>";
+          res.send( archiveList );
+        });
+      }
+      else{
+        res.send( err + "" );
+      }
     }
   
     else if(req.query['action'] == 'read'){
