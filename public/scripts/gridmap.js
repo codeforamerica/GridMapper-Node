@@ -129,6 +129,16 @@ function init(rep){
     popupAnchor: new L.Point(0, -8)
   });
   
+  response.gridDataBase = response.gridDataBase.split("~");
+  for(var c=0;c<response.gridDataBase.length;c++){
+    response.gridDataBase[c] = response.gridDataBase[c].split("|");
+    for(var r=0;r<response.gridDataBase[c].length;r++){
+      response.gridDataBase[c][r] = response.gridDataBase[c][r].split(",");
+      response.gridDataBase[c][r][0] *= 1;
+      response.gridDataBase[c][r][1] *= 1;
+    }
+  }
+  
   for(var i=0; i<gridColumns; i++){
     gridSquares.push( [ ] );
     for(var j=0; j<gridRows; j++){
