@@ -91,8 +91,7 @@ var init = exports.init = function (config) {
       query.exec(function(err, archives){
         if(!err){
           var firstReport = true;
-          for(archive in archives){
-            var mydate = archive.updated;
+          archives.forEach(function(archive){
             if(typeof mydate == "undefined"){
               mydate = "_";
             }
@@ -103,7 +102,7 @@ var init = exports.init = function (config) {
             else{
               archiveList += '<a href="/?archiveid=' + archive._id + '">Created ' + mydate + '</a><br/><br/>';
             }
-          }
+          });
           archiveList += "</body></html>";
           res.send( archiveList );
         }
