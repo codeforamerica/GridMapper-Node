@@ -348,7 +348,7 @@ function reportLevel(selecting){
   map.openPopup(popup);
   
   /* report to database */
-  var gridString = gridSquares[i][row].wind + ',' + gridSquares[i][row].flood;
+  var gridString = gridSquares[i][j].wind + ',' + gridSquares[i][j].flood;
   var s = document.createElement('script');
   s.type = "text/javascript";
   s.src = "/gridtest?action=set&id=" + response.gridID + "&col=" + i + "&row=" + j + "&txt=" + gridString;
