@@ -34,8 +34,14 @@ $(document).ready(function(){
 
 function init(rep){
   response = rep;
-  firstSquares = [ response.firstSquares ];
-  lastSquares = [ response.lastSquares ];
+  firstSquares = response.firstSquares.split(",");
+  lastSquares = response.lastSquares.split(",");
+  for(var s=0;s<firstSquares.length;s++){
+    firstSquares[s] *= 1;
+  }
+  for(var s=0;s<lastSquares.length;s++){
+    lastSquares[s] *= 1;
+  }
 
   // add the grid-selecting dropdown box
   var gridSelect = document.createElement("select");
@@ -59,7 +65,7 @@ function init(rep){
 
   /* initialize the map div and center it */
   map = new L.Map('map');
-  cityll = new L.LatLng(response.lat, response.lng);
+  cityll = new L.LatLng(response.lat * 1.0, response.lng * 1.0);
   map.setView(cityll, response.zoom ).addLayer(cloudmade);
 
   /* add GeoJSON of wards / county boundary */ 
@@ -95,12 +101,12 @@ function init(rep){
  
 
   /* configure the grid */
-  gridN = response.north;
-  gridS = response.south;
-  gridE = response.east;
-  gridW = response.west;
-  gridColumns = response.columns;
-  gridRows = response.rows;
+  gridN = response.north * 1.0;
+  gridS = response.south * 1.0;
+  gridE = response.east * 1.0;
+  gridW = response.west * 1.0;
+  gridColumns = response.columns * 1;
+  gridRows = response.rows * 1;
 
   /* prepare to draw and store grid data */
   gridRowHeight = (gridN - gridS) / gridRows;
@@ -369,7 +375,6 @@ function toggle(chk){
     }
   }
 }
-
 function archiveMap(){
   // check with Bootstrap's modal window
   $('#archiveID')[0].innerHTML = gridID;
