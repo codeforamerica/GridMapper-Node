@@ -135,7 +135,7 @@ var init = exports.init = function (config) {
       gridmap.GridMap.findById(req.query["id"], function(err, myGrid){
         gridded = myGrid.text.split(' ],')
         gridded[ 1 * req.query["col"] ] = re.query["txt"];
-        myGrid.text[1 * req.query["col"][ 1 * req.query["row"] ] = re.query["txt"].split(",");
+        myGrid.text[1 * req.query["col"]][ 1 * req.query["row"]] = re.query["txt"].split(",");
         myGrid.updated = new Date();
         myGrid.save(function(err){ });
       });
