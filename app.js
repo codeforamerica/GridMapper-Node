@@ -64,7 +64,7 @@ var init = exports.init = function (config) {
             firstReport = false;
           }
           else{
-            archiveList += '/?archiveid=' + archive._id + '">Created ' + archive.updated + '</a><br/><br/>';
+            archiveList += '<a href="/?archiveid=' + archive._id + '">Created ' + archive.updated + '</a><br/><br/>';
           }
         }
         archiveList += "</body></html>";
@@ -137,7 +137,7 @@ var init = exports.init = function (config) {
         var gridText = myGrid.text.split("~");
         gridText[req.query["col"] * 1] = gridText[req.query["col"] * 1].split("|");
         gridText[req.query["col"] * 1][req.query["row"] * 1] = req.query["txt"];
-        gridText[req.query["col"] * 1] = [req.query["col"] * 1].join("|");
+        gridText[req.query["col"] * 1] = gridText[req.query["col"] * 1].join("|");
         gridText = gridText.join("~");
         myGrid.text = gridText;
         myGrid.save(function(err){
