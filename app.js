@@ -102,11 +102,11 @@ var init = exports.init = function (config) {
           }
           archiveList += "</body></html>";
           res.send( archiveList );
-        });
-      }
-      else{
-        res.send( err + "" );
-      }
+        }
+        else{
+          res.send( err + "" );
+        }
+      });
     }
   
     else if(req.query['action'] == 'read'){
