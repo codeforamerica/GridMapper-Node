@@ -212,8 +212,9 @@ function bindGrid(gridSquare, i, j){
 }
 /* custom function to set your grid square's name */
 function squareName(i, j){
-  eval(response.squareNameFunction);
-  f(i,j);
+  var letter = String.fromCharCode(65+i);
+  j++;
+  return letter + j;
 }
 /* use this function if you want a marker to show its popup on mouseover */
 function activate(m){

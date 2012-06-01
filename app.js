@@ -65,8 +65,7 @@ var init = exports.init = function (config) {
       east: "-83.48285",
       west: "-83.9062",
       columns: "26",
-      rows: "16",
-      squareNameFunction: "f = function(){ var letter = String.fromCharCode(65+i);j++;return letter + j; }"
+      rows: "16"
     });
   });
   
