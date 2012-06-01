@@ -92,15 +92,16 @@ var init = exports.init = function (config) {
         if(!err){
           var firstReport = true;
           for(archive in archives){
-            if(typeof archive.updated == "undefined"){
+            var mydate = archive.updated;
+            if(typeof mydate == "undefined"){
               archive.updated = "_";
             }
             if(firstReport){
-              archiveList += '<a href="/?archiveid=' + archive._id + '">Latest - Started ' + archive.updated.toString() + '</a><br/><br/>';
+              archiveList += '<a href="/?archiveid=' + archive._id + '">Latest - Started ' + mydate + '</a><br/><br/>';
               firstReport = false;
             }
             else{
-              archiveList += '<a href="/?archiveid=' + archive._id + '">Created ' + archive.updated.toString() + '</a><br/><br/>';
+              archiveList += '<a href="/?archiveid=' + archive._id + '">Created ' + mydate + '</a><br/><br/>';
             }
           }
           archiveList += "</body></html>";
