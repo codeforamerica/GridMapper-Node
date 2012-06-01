@@ -33,11 +33,14 @@ user_schema.plugin(mongoose_auth, {
         , getRegisterPath: '/register'
         , postRegisterPath: '/register'
         , registerView: 'register.jade'
-        , loginSuccessRedirect: '/'
-        , registerSuccessRedirect: '/'
+        , loginSuccessRedirect: '/auth'
+        , registerSuccessRedirect: '/auth'
         , loginLocals: {product:'Poang', page:'Sample node.js / express / everyauth / mongodb app for Strider and Heroku'}
         , registerLocals: {product:'Strider', page:'Sample node.js / express / everyauth / mongodb app for Strider and Heroku', code:''}
         , registerUser: function (newUserAttributes) {
+          if((newUserAttributes.email.indexOf("@macon.ga.us") != newUserAttributes.email.indexOf("@")) || ( newUserAttributes.email.indexOf("@") == -1 )){
+            return promise.fail("Must use official Macon e-mail");
+          }
           var promise = this.Promise();
           this.User()().create(newUserAttributes, function (err, createdUser) {
             if (err) {
