@@ -52,6 +52,7 @@ var init = exports.init = function (config) {
   // Routes
   app.get('/', function(req,res){
     res.render('rapidstatus', {
+      archiveID: "",
       title: "Grid Map",
       firstSquares: "7,6,6,5,5,4,4,3,3,2,1,1,1,3,4,4,5,5,5,5,5,5,6,7,7,8",
       lastSquares: "8,11,11,13,13,13,13,13,14,14,15,15,15,15,16,16,16,16,16,16,13,12,11,11,10,9",

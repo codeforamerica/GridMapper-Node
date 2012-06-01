@@ -13,3 +13,68 @@ head
   link(href="/stylesheets/style.css", rel="stylesheet")
 
 body
+  div#column
+    .clear
+    #branding
+      .knol(style="width:100%;")
+        img(src="#{mapUserPic}", style="margin-left:30%;margin-right:30%;width:40%;")
+
+    .clear
+    
+    #explain
+      h2 Switch Map
+      a#windButton.btn.disabled.blueborder(href="#", onclick="loadWindMap()") Wind
+      a#floodButton.btn(href="#", onclick="loadFloodMap()") Flood
+      a#clearButton.btn(href="#", onclick="clearMap()") Blank
+
+      .btn-group
+        a.btn.dropdown-toggle(data-toggle="dropdown", href="#")
+          span#layerLabel Wind Layer
+          span.caret
+
+        ul.dropdown-menu
+          li
+            a#windButton(href="#", onclick="loadWindMap()") Wind Layer
+          li
+            a#floodButton(href="#", onclick="loadFloodMap()") Flood Layer
+          li
+            a#clearButton(href="#", onclick="clearMap()") Hide Grid
+
+      br
+      span.label.label-info County
+      input#countyLayer(type="checkbox", onclick="toggle(this)", checked="checked")
+      br
+      span.label.label-info Wards
+      input#wardLayer(type="checkbox", onclick="toggle(this)", checked="checked")
+      br
+      br
+      a#clearButton.btn(href="#", onclick="archiveMap()") Archive/Clear
+
+      div#squareedit
+        h2 Update Square
+        p
+          span.label.label-info Name
+          br
+          select#selectSquare(onchange="setSquare(this)")
+            option(value="none" selected="selected") None Selected
+            
+        p
+          span.label.label-info Wind
+          br
+          select#wind_level(disabled="disabled", onchange="reportLevel(this)")
+            option(value="0", selected="selected") 0- No damage
+            option(value="1") 1- Affected (Minor)
+            option(value="2") 2- Minor (Moderate)
+            option(value="3") 3- Major (Severe)
+            option(value="4") 4- Destroyed (Catastrophic)
+            
+        p
+          span.label.label-info Flood
+          br
+          select#flood_level(disabled="disabled", onchange="reportLevel(this)")
+            option(value="0", selected="selected") 0- No damage
+            option(value="1") 1- Affected (Minor)
+            option(value="2") 2- Minor (Moderate)
+            option(value="3") 3- Major (Severe)
+            option(value="4") 4- Destroyed (Catastrophic)
+
