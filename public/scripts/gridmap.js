@@ -397,7 +397,7 @@ function archiveMapConfirm(){
   $('#archiveCheck').modal('hide');
   var s = document.createElement('script');
   s.type = "text/javascript";
-  s.src = "/gridtest/auth?action=create";
+  s.src = "/auth/gridtest?action=create";
   s.onload = function(){
     for(var i=0; i<gridColumns; i++){
       for(var j=0; j<gridRows; j++){
