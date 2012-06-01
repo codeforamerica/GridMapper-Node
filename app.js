@@ -92,7 +92,7 @@ var init = exports.init = function (config) {
         if(!err){
           var firstReport = true;
           for(archive in archives){
-            if(!archive.updated){
+            if(typeof archive.updated == "undefined"){
               archive.updated = "_";
             }
             if(firstReport){
