@@ -77,10 +77,15 @@ var init = exports.init = function (config) {
       gridRpt = null
       if(req.query['id']){
         gridmap.GridMap.findById(req.query['id'], function(err, myGrid){
-          res.send({
-            gridDataBase: myGrid.text,
-            gridID: myGrid._id
-          });
+          if(myGrid){
+            res.send({
+              gridDataBase: myGrid.text,
+              gridID: myGrid._id
+            });
+          }
+          else{
+            res.send("no data");
+          }
         });
       }
       else{
@@ -88,10 +93,15 @@ var init = exports.init = function (config) {
         query.desc('updated');
         query.limit(1);
         query.exec(function(err, firstGrid){
-          res.send({
-            gridDataBase: firstGrid[0].text,
-            gridID: firstGrid[0]._id
-          });
+          if(firstGrid.length > 0){
+            res.send({
+              gridDataBase: firstGrid[0].text,
+              gridID: firstGrid[0]._id
+            });
+          }
+          else{
+            res.send("no data");
+          }
         });
       }
     }
