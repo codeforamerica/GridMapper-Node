@@ -136,7 +136,7 @@ var init = exports.init = function (config) {
         myGrid.updated = new Date();
         myGrid.text[1 * req.query["col"]][ 1 * req.query["row"]][0] = req.query["txt"].split(",")[0];
         myGrid.text[1 * req.query["col"]][ 1 * req.query["row"]][1] = req.query["txt"].split(",")[1];
-        
+        myGrid.text = myGrid.text.slice();
         myGrid.save(function(err){
           if(err){
             res.send(err);
