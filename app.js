@@ -50,10 +50,9 @@ var init = exports.init = function (config) {
   
   
   // Routes
-  app.get('/', function(req,res){
-    res.render('rapidstatus', {
+  app.get('/coords', function(req,res){
+    res.send({
       archiveID: "",
-      title: "Grid Map",
       firstSquares: "7,6,6,5,5,4,4,3,3,2,1,1,1,3,4,4,5,5,5,5,5,5,6,7,7,8",
       lastSquares: "8,11,11,13,13,13,13,13,14,14,15,15,15,15,16,16,16,16,16,16,13,12,11,11,10,9",
       tilexyz: "http://tile.stamen.com/terrain/{z}/{x}/{y}.jpg",
@@ -67,7 +66,14 @@ var init = exports.init = function (config) {
       west: "-83.9062",
       columns: "26",
       rows: "16",
-      squareNameFunction: "var letter = String.fromCharCode(65+i);j++;return letter + j;",
+      squareNameFunction: "function(){ var letter = String.fromCharCode(65+i);j++;return letter + j; }"
+    });
+  });
+  
+  app.get('/', function(req,res){
+    res.render('rapidstatus', {
+      archiveID: "",
+      title: "Grid Map",
       mapUserPic: "/images/citylogo.png",
       mapUserName: "EMA Sample"
     });

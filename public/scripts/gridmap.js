@@ -3,10 +3,10 @@ var map, gridSquares, activeGridLayer, activeMap;
 /* what does each status from 0-4 mean? */
 var statusToText = [
   "0- No damage",
-  "1- Affected (Minor)",
-  "2- Minor (Moderate)",
-  "3- Major (Severe)",
-  "4- Destroyed (Catastrophic)"
+  "1- Minor",
+  "2- Moderate",
+  "3- Severe",
+  "4- Catastrophic"
 ];
 /* what color should a square from 0-4 be? */
 var statusToColor = [
@@ -21,31 +21,46 @@ var statusToColor = [
 var activeMap = 'wind';
 
 var activeGrid = [ ];
-var gridRowHeight, gridColumnWidth, gridN, gridW, gridE, gridS, gridColumns, gridRows;
+var gridRowHeight, gridColumnWidth, gridN, gridW, gridE, gridS, gridColumns, gridRows, firstSquares, lastSquares;
 // 26 numbers matching first occurences from column A to column Z
-var firstSquares = [{{ firstSquares }}];
-var lastSquares = [{{ lastSquares }}];
 var excluded = ['T15'];
 
-var wards, county, baseIcon, rowMark, colMark;
+var wards, county, baseIcon, rowMark, colMark, response;
 
 $(document).ready(function(){
-  init();
+  $.getJSON("/coords?id=", init);
+  //init();
 });
 
-function init(){
+function init(rep){
+  response = rep;
+  firstSquares = [ response.firstSquares ];
+  lastSquares = [ response.lastSquares ];
+
+  // add the grid-selecting dropdown box
+  var gridSelect = document.createElement("select");
+  gridSelect.onchange = function(this){
+    setSquare(this);
+  };
+  var noneOpt = document.createElement("option");
+  noneOpt.value="none";
+  noneOpt.selected="selected";
+  noneOpt.innerHTML = "None Selected";
+  gridSelect.appendChild(noneOpt);
+  $("#insertDropdownBox")[0].appendChild(gridSelect);
+
   // hide modal archive check window
   //$("#archiveCheck").modal({ });
 
   /* create a tile layer */
-  var cloudmadeUrl = '{{ tilexyz }}';
-  cloudmadeAttribution = '{{ tilecopyright }}',
+  var cloudmadeUrl = response.tilexyz;
+  cloudmadeAttribution = response.tilecopyright;
   cloudmade = new L.TileLayer(cloudmadeUrl, {maxZoom: 18, attribution: cloudmadeAttribution});
 
   /* initialize the map div and center it */
   map = new L.Map('map');
-  cityll = new L.LatLng({{ lat }}, {{ lng }});
-  map.setView(cityll, {{ zoom }}).addLayer(cloudmade);
+  cityll = new L.LatLng(response.lat, response.lng);
+  map.setView(cityll, response.zoom ).addLayer(cloudmade);
 
   /* add GeoJSON of wards / county boundary */ 
   $("#wardLayer").checked = true;
@@ -80,12 +95,12 @@ function init(){
  
 
   /* configure the grid */
-  gridN = {{ north }};
-  gridS = {{ south }};
-  gridE = {{ east }};
-  gridW = {{ west }};
-  gridColumns = {{ columns }};
-  gridRows = {{ rows }};
+  gridN = response.north;
+  gridS = response.south;
+  gridE = response.east;
+  gridW = response.west;
+  gridColumns = response.columns;
+  gridRows = response.rows;
 
   /* prepare to draw and store grid data */
   gridRowHeight = (gridN - gridS) / gridRows;
@@ -190,7 +205,8 @@ function bindGrid(gridSquare, i, j){
 }
 /* custom function to set your grid square's name */
 function squareName(i, j){
-{{ squareNameFunction }}
+  var f = eval(response.squareNameFunction);
+  f(i,j);
 }
 /* use this function if you want a marker to show its popup on mouseover */
 function activate(m){
