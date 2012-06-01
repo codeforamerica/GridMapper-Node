@@ -80,7 +80,7 @@ var init = exports.init = function (config) {
           if(myGrid){
             res.send({
               gridDataBase: myGrid.text,
-              gridID: myGrid._id
+              gridID: myGrid._id,
               firstSquares: "7,6,6,5,5,4,4,3,3,2,1,1,1,3,4,4,5,5,5,5,5,5,6,7,7,8",
               lastSquares: "8,11,11,13,13,13,13,13,14,14,15,15,15,15,16,16,16,16,16,16,13,12,11,11,10,9",
               tilexyz: "http://tile.stamen.com/terrain/{z}/{x}/{y}.jpg",
