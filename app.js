@@ -51,7 +51,25 @@ var init = exports.init = function (config) {
   
   // Routes
   app.get('/', function(req,res){
-    res.render('rapidstatus');
+    res.render('rapidstatus', {
+      "title": "Grid Map",
+      "firstSquares" : "7,6,6,5,5,4,4,3,3,2,1,1,1,3,4,4,5,5,5,5,5,5,6,7,7,8",
+      "lastSquares" : "8,11,11,13,13,13,13,13,14,14,15,15,15,15,16,16,16,16,16,16,13,12,11,11,10,9",
+      "tilexyz" : "http://tile.stamen.com/terrain/{z}/{x}/{y}.jpg",
+      "tilecopyright" : "Map data (c) 2012 OpenStreetMap contributors, Tiles by Mike Migurski of Stamen Design",
+      "lat" : "32.815",
+      "lng" : "-83.7491226",
+      "zoom" : "11",
+      "north" : "32.968729",
+      "south" : "32.661449",
+      "east" : "-83.48285",
+      "west" : "-83.9062",
+      "columns" : "26",
+      "rows" : "16",
+      "squareNameFunction" : "var letter = String.fromCharCode(65+i);j++;return letter + j;",
+      "mapUserPic" : "/static/images/citylogo.png",
+      "mapUserName" : "EMA Sample"
+    });
   });
 
   app.get('/auth', middleware.require_auth_browser, routes.index);
