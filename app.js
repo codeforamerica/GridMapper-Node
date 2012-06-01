@@ -133,7 +133,7 @@ var init = exports.init = function (config) {
     }
     else if(req.query['action'] == 'set'){
       gridmap.GridMap.findById(req.query["id"], function(err, myGrid){
-        myGrid.text[1 * req.query["col"]][ 1 * req.query["row"]] = re.query["txt"].split(",");
+        myGrid.text[1 * req.query["col"]][ 1 * req.query["row"]] = req.query["txt"].split(",");
         myGrid.updated = new Date();
         myGrid.save(function(err){ });
       });
