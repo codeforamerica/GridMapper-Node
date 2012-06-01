@@ -81,6 +81,19 @@ var init = exports.init = function (config) {
             res.send({
               gridDataBase: myGrid.text,
               gridID: myGrid._id
+              firstSquares: "7,6,6,5,5,4,4,3,3,2,1,1,1,3,4,4,5,5,5,5,5,5,6,7,7,8",
+              lastSquares: "8,11,11,13,13,13,13,13,14,14,15,15,15,15,16,16,16,16,16,16,13,12,11,11,10,9",
+              tilexyz: "http://tile.stamen.com/terrain/{z}/{x}/{y}.jpg",
+              tilecopyright: "Map data &copy; 2012 OpenStreetMap contributors, Tiles by Mike Migurski of Stamen Design",
+              lat: "32.815",
+              lng: "-83.7491226",
+              zoom: "11",
+              north: "32.968729",
+              south: "32.661449",
+              east: "-83.48285",
+              west: "-83.9062",
+              columns: "26",
+              rows: "16"
             });
           }
           else{
@@ -96,7 +109,20 @@ var init = exports.init = function (config) {
           if(firstGrid.length > 0){
             res.send({
               gridDataBase: firstGrid[0].text,
-              gridID: firstGrid[0]._id
+              gridID: firstGrid[0]._id,
+              firstSquares: "7,6,6,5,5,4,4,3,3,2,1,1,1,3,4,4,5,5,5,5,5,5,6,7,7,8",
+              lastSquares: "8,11,11,13,13,13,13,13,14,14,15,15,15,15,16,16,16,16,16,16,13,12,11,11,10,9",
+              tilexyz: "http://tile.stamen.com/terrain/{z}/{x}/{y}.jpg",
+              tilecopyright: "Map data &copy; 2012 OpenStreetMap contributors, Tiles by Mike Migurski of Stamen Design",
+              lat: "32.815",
+              lng: "-83.7491226",
+              zoom: "11",
+              north: "32.968729",
+              south: "32.661449",
+              east: "-83.48285",
+              west: "-83.9062",
+              columns: "26",
+              rows: "16"
             });
           }
           else{
@@ -124,25 +150,6 @@ var init = exports.init = function (config) {
         res.send({ gridID: grid._id });
       });
     }
-  });
-  
-  app.get('/coords', function(req,res){
-    res.send({
-      archiveID: "",
-      firstSquares: "7,6,6,5,5,4,4,3,3,2,1,1,1,3,4,4,5,5,5,5,5,5,6,7,7,8",
-      lastSquares: "8,11,11,13,13,13,13,13,14,14,15,15,15,15,16,16,16,16,16,16,13,12,11,11,10,9",
-      tilexyz: "http://tile.stamen.com/terrain/{z}/{x}/{y}.jpg",
-      tilecopyright: "Map data &copy; 2012 OpenStreetMap contributors, Tiles by Mike Migurski of Stamen Design",
-      lat: "32.815",
-      lng: "-83.7491226",
-      zoom: "11",
-      north: "32.968729",
-      south: "32.661449",
-      east: "-83.48285",
-      west: "-83.9062",
-      columns: "26",
-      rows: "16"
-    });
   });
   
   app.get('/', function(req,res){

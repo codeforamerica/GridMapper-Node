@@ -28,7 +28,7 @@ var excluded = ['T15'];
 var wards, county, baseIcon, rowMark, colMark, response;
 
 $(document).ready(function(){
-  $.getJSON("/coords?id=", init);
+  $.getJSON("/gridtest?action=read&id=" + gup("archiveid"), init);
   //init();
 });
 
@@ -128,7 +128,7 @@ function init(rep){
     gridSquares.push( [ ] );
     for(var j=0; j<gridRows; j++){
       /* add every square in the grid - even if not set to be visible */
-      gridSquares[i].push({ wind: gridDataBase[i][j][0], flood: gridDataBase[i][j][1] });
+      gridSquares[i].push({ wind: response.gridDataBase[i][j][0], flood: response.gridDataBase[i][j][1] });
       if((j >= firstSquares[i]-1) && (j<lastSquares[i])){
         /* avoid special, excluded squares */
         var excludeSquare = false;
@@ -155,7 +155,7 @@ function init(rep){
           new L.LatLng( gridN - (j+1) * gridRowHeight, gridW + (i+1) * gridColumnWidth ),
           new L.LatLng( gridN - (j+1) * gridRowHeight, gridW + i * gridColumnWidth )
         ];
-        var gridSquare = new L.Polygon(corners, { color:'#000', weight: 3, fill: true, fillColor: statusToColor[gridDataBase[i][j][0]], fillOpacity: 0.6, opacity: 0.4 });
+        var gridSquare = new L.Polygon(corners, { color:'#000', weight: 3, fill: true, fillColor: statusToColor[response.gridDataBase[i][j][0]], fillOpacity: 0.6, opacity: 0.4 });
         map.addLayer(gridSquare);
 
         /* store and handle events for this grid square */
@@ -350,7 +350,7 @@ function reportLevel(selecting){
   }
   var s = document.createElement('script');
   s.type = "text/javascript";
-  s.src = "/gridtest?action=set&id=" + gridID + "&col=" + i + "&txt=" + gridString;
+  s.src = "/gridtest?action=set&id=" + response.gridID + "&col=" + i + "&txt=" + gridString;
   document.body.appendChild(s);
 }
 
@@ -379,7 +379,7 @@ function toggle(chk){
 }
 function archiveMap(){
   // check with Bootstrap's modal window
-  $('#archiveID')[0].innerHTML = gridID;
+  $('#archiveID')[0].innerHTML = response.gridID;
   $('#archiveCheck').modal('show');
 }
 function archiveMapConfirm(){
@@ -403,5 +403,4 @@ function archiveMapConfirm(){
   document.body.appendChild(s);
 }
 
-/* retrieve URL variables */
 function gup(nm){nm=nm.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");var rxS="[\\?&]"+nm+"=([^&#]*)";var rx=new RegExp(rxS);var rs=rx.exec(window.location.href);if(!rs){return null;}else{return rs[1];}}
