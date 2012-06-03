@@ -5,7 +5,8 @@ var mongoose = require('mongoose'),
 var GridMapSchema = new Schema({
   text: String,
   name: String,
-  updated: { type: Date, index: true }
+  updated: { type: Date, index: true },
+  created: Date
 });
 
 var GridMap = mongoose.model('GridMap', GridMapSchema);
