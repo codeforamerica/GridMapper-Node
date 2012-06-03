@@ -87,7 +87,7 @@ var init = exports.init = function (config) {
     if(req.query['action'] == 'archive'){
       archiveList = '<!DOCTYPE html>\n<html><body>'
       var query = gridmap.GridMap.find();
-      query.desc('updated');
+      query.desc('created');
       query.limit(20);
       query.exec(function(err, archives){
         if(!err){
@@ -105,7 +105,7 @@ var init = exports.init = function (config) {
               firstReport = false;
             }
             else{
-              archiveList += '<a href="/?archiveid=' + archive._id + '">Created ' + mydate + '</a><br/><br/>';
+              archiveList += '<a href="/?archiveid=' + archive._id + '">Updated ' + mydate + '</a><br/><br/>';
             }
           });
           archiveList += "</body></html>";
@@ -146,7 +146,7 @@ var init = exports.init = function (config) {
       }
       else{
         var query = gridmap.GridMap.find({});
-        query.desc('updated');
+        query.desc('created');
         query.limit(1);
         query.exec(function(err, firstGrid){
           if(firstGrid.length > 0){

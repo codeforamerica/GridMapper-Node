@@ -6,7 +6,7 @@ var GridMapSchema = new Schema({
   text: String,
   name: String,
   updated: { type: Date, index: true },
-  created: Date
+  created: { type: Date, index: true }
 });
 
 var GridMap = mongoose.model('GridMap', GridMapSchema);
