@@ -65,9 +65,12 @@ function init(rep){
   //$("#archiveCheck").modal({ });
 
   /* create a tile layer */
-  var cloudmadeUrl = response.tilexyz;
+  /* var cloudmadeUrl = response.tilexyz;
   cloudmadeAttribution = response.tilecopyright;
-  cloudmade = new L.TileLayer(cloudmadeUrl, {maxZoom: 18, attribution: cloudmadeAttribution});
+  cloudmade = new L.TileLayer(cloudmadeUrl, {maxZoom: 18, attribution: cloudmadeAttribution}); */
+  var bing_key = "Arc0Uekwc6xUCJJgDA6Kv__AL_rvEh4Hcpj4nkyUmGTIx-SxMd52PPmsqKbvI_ce";
+  var bing = new L.TileLayer.Bing(bing_key, 'AerialWithLabels', {minZoom:10, maxZoom:19});
+  map.addLayer(bing);
 
   /* initialize the map div and center it */
   map = new L.Map('map');
