@@ -56,7 +56,7 @@ function init(rep){
   map = new L.Map('map');
   cityll = new L.LatLng(response.lat * 1.0, response.lng * 1.0);
   map.setView(cityll, response.zoom );//.addLayer(cloudmade);
-  map.addLayer(bing);
+  map.addLayer(bingLayer);
 
   /* add GeoJSON of wards / county boundary */ 
   $("#wardLayer")[0].checked = false;
