@@ -38,11 +38,14 @@ body
             a#clearButton(href="#", onclick="clearMap()") Hide Grid
 
       br
+      span.label.label-info Satellite
+      input#satelliteLayer(type="checkbox", onclick="toggle(this)", checked="checked")
+      br
       span.label.label-info County
       input#countyLayer(type="checkbox", onclick="toggle(this)", checked="checked")
       br
       span.label.label-info Wards
-      input#wardLayer(type="checkbox", onclick="toggle(this)", checked="checked")
+      input#wardLayer(type="checkbox", onclick="toggle(this)")
       br
       br
       a#clearButton.btn(href="#", onclick="archiveMap()") Archive/Clear

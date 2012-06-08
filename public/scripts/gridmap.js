@@ -1,4 +1,4 @@
-var map, gridSquares, activeGridLayer, activeMap;
+var map, gridSquares, activeGridLayer, activeMap, bingLayer, terrainLayer;
 
 /* what does each status from 0-4 mean? */
 var statusToText = [
@@ -65,11 +65,11 @@ function init(rep){
   //$("#archiveCheck").modal({ });
 
   /* create a tile layer */
-  /* var cloudmadeUrl = response.tilexyz;
+  var cloudmadeUrl = response.tilexyz;
   cloudmadeAttribution = response.tilecopyright;
-  cloudmade = new L.TileLayer(cloudmadeUrl, {maxZoom: 18, attribution: cloudmadeAttribution}); */
+  terrainLayer = new L.TileLayer(cloudmadeUrl, {maxZoom: 18, attribution: cloudmadeAttribution});
   var bing_key = "Arc0Uekwc6xUCJJgDA6Kv__AL_rvEh4Hcpj4nkyUmGTIx-SxMd52PPmsqKbvI_ce";
-  var bing = new L.TileLayer.Bing(bing_key, 'AerialWithLabels', {minZoom:10, maxZoom:19});
+  bingLayer = new L.TileLayer.Bing(bing_key, 'AerialWithLabels', {minZoom:10, maxZoom:19});
 
   /* initialize the map div and center it */
   map = new L.Map('map');
@@ -389,6 +389,16 @@ function toggle(chk){
     }
     else{
       county.setStyle({ opacity: 0 });
+    }
+  }
+  if(chk.id == "satelliteLayer"){
+    if(chk.checked){
+      map.addLayer(bingLayer);
+      map.removeLayer(terrainLayer);
+    }
+    else{
+      map.addLayer(terrainLayer);
+      map.removeLayer(bingLayer);
     }
   }
 }
