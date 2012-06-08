@@ -62,7 +62,7 @@ function init(rep){
   map.addLayer(bing);
 
   /* add GeoJSON of wards / county boundary */ 
-  $("#wardLayer").checked = false;
+  $("#wardLayer")[0].checked = false;
   var wardgeo = new L.GeoJSON();
   wards = [ ];
   wardgeo.on('featureparse', function(e){
@@ -73,7 +73,7 @@ function init(rep){
     e.layer.bindPopup( e.properties.Description );
   });
   
-  $("#countyLayer").checked = true;
+  $("#countyLayer")[0].checked = true;
   var countygeo = new L.GeoJSON();
   countygeo.on('featureparse', function(e){
     e.layer.setStyle({ fillOpacity: 0, opacity: 0.8, weight: 4, color: "#f00" });
