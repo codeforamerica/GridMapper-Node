@@ -78,13 +78,14 @@ function init(rep){
   map.addLayer(bing);
 
   /* add GeoJSON of wards / county boundary */ 
-  $("#wardLayer").checked = true;
+  $("#wardLayer").checked = false;
   var wardgeo = new L.GeoJSON();
   wards = [ ];
   wardgeo.on('featureparse', function(e){
   	//console.log(e.layer);
   	map.addLayer(e.layer);
   	wards.push(e.layer);
+  	e.layer.setStyle({ fillOpacity: 0, opacity: 0 });
     e.layer.bindPopup( e.properties.Description );
   });
   
