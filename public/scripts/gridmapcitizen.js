@@ -1,4 +1,4 @@
-var map, gridSquares, activeGridLayer, activeMap, bingLayer;
+var map, gridSquares, activeGridLayer, activeMap, bingLayer, terrainLayer;
 
 /* what does each status from 0-4 mean? */
 var statusToText = [
@@ -49,6 +49,9 @@ function init(rep){
   }
 
   /* create a tile layer */
+  var cloudmadeUrl = response.tilexyz;
+  cloudmadeAttribution = response.tilecopyright;
+  terrainLayer = new L.TileLayer(cloudmadeUrl, {maxZoom: 18, attribution: cloudmadeAttribution});
   var bing_key = "Arc0Uekwc6xUCJJgDA6Kv__AL_rvEh4Hcpj4nkyUmGTIx-SxMd52PPmsqKbvI_ce";
   bingLayer = new L.TileLayer.Bing(bing_key, 'AerialWithLabels', {minZoom:10, maxZoom:19});
   
@@ -347,12 +350,22 @@ function toggle(chk){
       }
     }
   }
-  if(chk.id == "countyLayer"){
+  else if(chk.id == "countyLayer"){
     if(chk.checked){
       county.setStyle({ opacity: 0.8 });
     }
     else{
       county.setStyle({ opacity: 0 });
+    }
+  }
+  else if(chk.id == "satelliteLayer"){
+    if(chk.checked){
+      map.addLayer(bingLayer);
+      map.removeLayer(terrainLayer);
+    }
+    else{
+      map.addLayer(terrainLayer);
+      map.removeLayer(bingLayer);
     }
   }
 }

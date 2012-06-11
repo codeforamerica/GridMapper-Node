@@ -383,7 +383,7 @@ function toggle(chk){
       }
     }
   }
-  if(chk.id == "countyLayer"){
+  else if(chk.id == "countyLayer"){
     if(chk.checked){
       county.setStyle({ opacity: 0.8 });
     }
@@ -391,7 +391,7 @@ function toggle(chk){
       county.setStyle({ opacity: 0 });
     }
   }
-  if(chk.id == "satelliteLayer"){
+  else if(chk.id == "satelliteLayer"){
     if(chk.checked){
       map.addLayer(bingLayer);
       map.removeLayer(terrainLayer);
