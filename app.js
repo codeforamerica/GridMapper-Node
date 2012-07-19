@@ -140,7 +140,8 @@ var init = exports.init = function (config) {
             });
           }
           else{
-            res.send("no data");
+            //res.send("no data");
+            res.redirect('/auth/gridtest?action=create')
           }
         });
       }
@@ -169,7 +170,9 @@ var init = exports.init = function (config) {
             });
           }
           else{
-            res.send("no data");
+            //res.send("no data");
+            // no grids available
+            res.redirect('/auth/gridtest?action=create')
           }
         });
       }
