@@ -204,7 +204,7 @@ function bindGrid(gridSquare, i, j){
     
     var tractList = tractsBySquare[ squareName(i,j) ];
     var peoplesum = 0;
-    var buildsum = 0;
+    var housesum = 0;
     for(var t=0;t<tractList.length;t++){
       if(statsByTract[tractList[t] + ""]){
         housesum += statsByTract[tractList[t] + ""][0];
@@ -215,7 +215,7 @@ function bindGrid(gridSquare, i, j){
     /* show popup in center of grid square */
     var popup = new L.Popup();
     var popupContent = "<h3>" + squareName(i,j) + "</h3><span class='label label-info'>Wind</span>" + statusToText[1 * gridSquares[i][j].wind] + "<br/><span class='label label-info'>Flood</span>" + statusToText[1 * gridSquares[i][j].flood];
-    popupContent += "<hr/>US Census: Surrounding area has " + peoplesum + " people in " + buildsum + " housing units.";
+    popupContent += "<hr/>US Census: Surrounding area has " + peoplesum + " people in " + housesum + " housing units.";
     popup.setContent(popupContent);
     var gridCenter = new L.LatLng( gridN - (j+0.5) * gridRowHeight, gridW + (i+0.5) * gridColumnWidth);
     popup.setLatLng(gridCenter);

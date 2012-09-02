@@ -50,7 +50,8 @@ var init = exports.init = function (config) {
   });
   
   // Routes
-  app.get('/auth/gridtest', middleware.require_auth_browser, function(req,res){
+  //app.get('/auth/gridtest', middleware.require_auth_browser, function(req,res){
+  app.get('/auth/gridtest', function(req,res){
     if(req.query['action'] == 'set'){
       gridmap.GridMap.findById(req.query["id"], function(err, myGrid){
         myGrid.updated = new Date();
