@@ -201,10 +201,22 @@ function bindGrid(gridSquare, i, j){
     $("#flood_level")[0].disabled = false;
     $("#flood_level")[0].value = gridSquares[i][j].flood;
     $("#selectSquare")[0].value = i + "," + j;
+    
+    var tractList = tractsBySquare[ squareName(i,j) ];
+    var peoplesum = 0;
+    var buildsum = 0;
+    for(var t=0;t<tractList.length;t++){
+      if(statsByTract[tractList[t] + ""]){
+        housesum += statsByTract[tractList[t] + ""][0];
+        peoplesum += statsByTract[tractList[t] + ""][1];
+      }
+    }
 
     /* show popup in center of grid square */
     var popup = new L.Popup();
-    popup.setContent("<h3>" + squareName(i,j) + "</h3><span class='label label-info'>Wind</span>" + statusToText[1 * gridSquares[i][j].wind] + "<br/><span class='label label-info'>Flood</span>" + statusToText[1 * gridSquares[i][j].flood]);
+    var popupContent = "<h3>" + squareName(i,j) + "</h3><span class='label label-info'>Wind</span>" + statusToText[1 * gridSquares[i][j].wind] + "<br/><span class='label label-info'>Flood</span>" + statusToText[1 * gridSquares[i][j].flood];
+    popupContent += "<hr/>US Census: Surrounding area has " + peoplesum + " people in " + buildsum + " housing units.";
+    popup.setContent(popupContent);
     var gridCenter = new L.LatLng( gridN - (j+0.5) * gridRowHeight, gridW + (i+0.5) * gridColumnWidth);
     popup.setLatLng(gridCenter);
     map.openPopup(popup);
