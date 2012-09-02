@@ -188,7 +188,8 @@ var init = exports.init = function (config) {
     });
   });
 
-  app.get('/auth', middleware.require_auth_browser, function(req,res){
+  //app.get('/auth', middleware.require_auth_browser, function(req,res){
+  app.get('/auth', function(req,res){
     res.render('rapidstatus', {
       archiveID: "",
       title: "Grid Map",
