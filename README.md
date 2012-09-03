@@ -3,7 +3,7 @@
 <a href="http://gridmapauth.heroku.com">GridMapper</a> draws a custom grid over a map.
 Each grid square is color-coded based on damage reports, allowing you to create, interpret, and inform the public with an online map.
 
-The server can be configured to allow edits from users who are signed in
+The server can be configured to allow edits from only users who are signed in. These users can also use the Archive button to save the grid and generate a new grid. These archives can later be retrieved from the database.
 
 Browser support is equivalent to Leaflet.js maps (Chrome, Firefox, Internet Explorer 7+, Safari Mobile on iOS)
 
