@@ -3,6 +3,8 @@
 <a href="http://gridmapauth.heroku.com">GridMapper</a> draws a custom grid over a map.
 Each grid square is color-coded based on damage reports, allowing you to create, interpret, and inform the public with an online map.
 
+The server can be configured to allow edits from users who are signed in
+
 Browser support is equivalent to Leaflet.js maps (Chrome, Firefox, Internet Explorer 7+, Safari Mobile on iOS)
 
 <img src="http://i.imgur.com/I0GC0.png"/>
@@ -12,6 +14,13 @@ Browser support is equivalent to Leaflet.js maps (Chrome, Firefox, Internet Expl
 The background layer can be set to a roadmap (tiles by Stamen) or aerial photos (from Bing)
 
 GeoJSON layers underneath the grid add context ( this example adds city limits and wards ).
+
+blockgrid.js stores Census data for tracts which overlap each grid square. You can generate this data using these two scripts in QGIS:
+
+<ul>
+<li><a href="https://gist.github.com/3594805">Census2Grid.py</a></li>
+<li><a href="https://gist.github.com/3595104">BlockInfo.py</a></li>
+</ul>
 
 The map also can support multiple grids ( this example separates wind and flood damage grids ).
 
