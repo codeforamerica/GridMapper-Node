@@ -16,6 +16,40 @@ var auth = require('./auth')
 var HOUR_IN_MILLISECONDS = 3600000;
 var session_store;
 
+// customize the grid
+
+  var maptitle = "Grid Map",
+    mapuserpic = "/images/citylogo.png",
+    mapusername = "Macon-Bibb EMA",
+
+    // background tile location and copyright  
+    tilexyz = "http://tile.stamen.com/terrain/{z}/{x}/{y}.jpg",
+    tilecopyright = "Map data &copy; 2012 OpenStreetMap contributors, Tiles by Mike Migurski of Stamen Design",
+
+    // where to center the map when it's first loaded
+    lat = 32.815,
+    lng = -83.7491226,
+    zoom = 11,
+    
+    // boundaries of the grid
+    north = 32.968729,
+    south = 32.661449,
+    east = -83.48285,
+    west = -83.9062,
+    columns = 26,
+    rows = 16,
+    
+    /* where each grid row starts and ends
+    An example
+    ****[ ]****
+    [ ] [ ] [ ]
+    ********[ ]
+    firstSquares = "2,1,3",
+    lastSquares = "2,3,3";
+    */
+    firstSquares = "7,6,6,5,5,4,4,3,3,2,1,1,1,3,4,4,5,5,5,5,5,5,6,7,7,8",
+    lastSquares = "8,11,11,13,13,13,13,13,14,14,15,15,15,15,16,16,16,16,16,16,13,12,11,11,10,9";
+
 var init = exports.init = function (config) {
   
   var db_uri = process.env.MONGOLAB_URI || process.env.MONGODB_URI || config.default_db_uri;
@@ -125,19 +159,19 @@ var init = exports.init = function (config) {
             res.send({
               gridDataBase: myGrid.text,
               gridID: myGrid._id,
-              firstSquares: "7,6,6,5,5,4,4,3,3,2,1,1,1,3,4,4,5,5,5,5,5,5,6,7,7,8",
-              lastSquares: "8,11,11,13,13,13,13,13,14,14,15,15,15,15,16,16,16,16,16,16,13,12,11,11,10,9",
-              tilexyz: "http://tile.stamen.com/terrain/{z}/{x}/{y}.jpg",
-              tilecopyright: "Map data &copy; 2012 OpenStreetMap contributors, Tiles by Mike Migurski of Stamen Design",
-              lat: "32.815",
-              lng: "-83.7491226",
-              zoom: "11",
-              north: "32.968729",
-              south: "32.661449",
-              east: "-83.48285",
-              west: "-83.9062",
-              columns: "26",
-              rows: "16"
+              firstSquares: firstSquares,
+              lastSquares: lastSquares,
+              tilexyz: tilexyz,
+              tilecopyright: tilecopyright,
+              lat: lat,
+              lng: lng,
+              zoom: zoom,
+              north: north,
+              south: south,
+              east: east,
+              west: west,
+              columns: columns,
+              rows: rows
             });
           }
           else{
@@ -155,19 +189,19 @@ var init = exports.init = function (config) {
             res.send({
               gridDataBase: firstGrid[0].text,
               gridID: firstGrid[0]._id,
-              firstSquares: "7,6,6,5,5,4,4,3,3,2,1,1,1,3,4,4,5,5,5,5,5,5,6,7,7,8",
-              lastSquares: "8,11,11,13,13,13,13,13,14,14,15,15,15,15,16,16,16,16,16,16,13,12,11,11,10,9",
-              tilexyz: "http://tile.stamen.com/terrain/{z}/{x}/{y}.jpg",
-              tilecopyright: "Map data &copy; 2012 OpenStreetMap contributors, Tiles by Mike Migurski of Stamen Design",
-              lat: "32.815",
-              lng: "-83.7491226",
-              zoom: "11",
-              north: "32.968729",
-              south: "32.661449",
-              east: "-83.48285",
-              west: "-83.9062",
-              columns: "26",
-              rows: "16"
+              firstSquares: firstSquares,
+              lastSquares: lastSquares,
+              tilexyz: tilexyz,
+              tilecopyright: tilecopyright,
+              lat: lat,
+              lng: lng,
+              zoom: zoom,
+              north: north,
+              south: south,
+              east: east,
+              west: west,
+              columns: columns,
+              rows: rows
             });
           }
           else{
@@ -183,9 +217,9 @@ var init = exports.init = function (config) {
   app.get('/', function(req,res){
     res.render('citizenstatus', {
       archiveID: "",
-      title: "Grid Map",
-      mapUserPic: "/images/citylogo.png",
-      mapUserName: "EMA Sample"
+      title: maptitle,
+      mapUserPic: mapuserpic,
+      mapUserName: mapusername
     });
   });
 
@@ -193,9 +227,9 @@ var init = exports.init = function (config) {
   app.get('/auth', function(req,res){
     res.render('rapidstatus', {
       archiveID: "",
-      title: "Grid Map",
-      mapUserPic: "/images/citylogo.png",
-      mapUserName: "EMA Sample"
+      title: maptitle,
+      mapUserPic: mapuserpic,
+      mapUserName: mapusername
     });
   });
   
