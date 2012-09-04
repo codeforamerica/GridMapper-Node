@@ -227,8 +227,8 @@ function bindGrid(gridSquare, i, j){
 
     /* show popup in center of grid square */
     var popup = new L.Popup();
-    var popupContent = "<h3>" + squareName(i,j) + "</h3><span class='label label-info'>Wind</span>" + statusToText[1 * gridSquares[i][j].wind] + "<br/><span class='label label-info'>Flood</span>" + statusToText[1 * gridSquares[i][j].flood];
-    popupContent += "<hr/>Census: area has " + peoplesum + " people in " + housesum + " housing units.";
+    var popupContent = "<h3>" + squareName(i,j) + "</h3><span class='label label-info'>Wind</span>" + statusToText[1 * gridSquares[i][j].wind] + "<span class='label label-info' style='margin-left:10px;'>Flood</span>" + statusToText[1 * gridSquares[i][j].flood];
+    popupContent += "<hr/>Census: " + peoplesum + " people in " + housesum + " housing units";
     popup.setContent(popupContent);
     var gridCenter = new L.LatLng( gridN - (j+0.5) * gridRowHeight, gridW + (i+0.5) * gridColumnWidth);
     popup.setLatLng(gridCenter);
