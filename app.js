@@ -28,7 +28,7 @@ var session_store;
 
     // where to center the map when it's first loaded
     lat = 32.815,
-    lng = -83.7491226,
+    lng = -83.648529,
     zoom = 11,
     
     // boundaries of the grid
