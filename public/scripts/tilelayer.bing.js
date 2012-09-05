@@ -53,7 +53,7 @@ L.TileLayer.Bing = L.TileLayer.extend({
         url = "http://dev.virtualearth.net/REST/v1/Imagery/Metadata/" +
               this._mapType + L.Util.getParamString(params),
         script = document.createElement("script");
-    console.log(url);
+    //console.log(url);
     script.type = "text/javascript";
     script.src = url;
     script.id = this._callbackId;
@@ -109,7 +109,7 @@ L.TileLayer.Bing = L.TileLayer.extend({
     var tileurl = this._url
 				.replace('{subdomain}', subdomains[(xy.x + xy.y) % subdomains.length])
 				.replace('{quadkey}', quadDigits.join(""));
-		console.log(tileurl);
+		//console.log(tileurl);
 		return tileurl;		
   },
   

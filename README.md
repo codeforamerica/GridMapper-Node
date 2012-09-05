@@ -1,6 +1,6 @@
 ## Rapid Evaluation Map
 
-<a href="http://gridmapauth.heroku.com">GridMapper</a> draws a custom grid over a map.
+<a href="http://gridmapauth.heroku.com">GridMapper-Node</a> draws a custom grid over a map.
 Each grid square is color-coded based on damage reports, allowing you to create, interpret, and inform the public with an online map.
 
 The server can be configured to allow edits from only users who are signed in. These users can also use the Archive button to save the grid and generate a new grid. These archives can later be retrieved from the database.
@@ -48,7 +48,7 @@ For more details, please see BeyondFog's [blog post](http://blog.beyondfog.com/?
  
 1) Do a git clone:
 
-    git clone git://github.com:mapmeld/GridMapAuth.git
+    git clone git://github.com:codeforamerica/GridMapper-Node.git
     
 2) cd into the project directory and then install the necessary node modules:
 
