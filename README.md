@@ -15,8 +15,11 @@ The background layer can be set to a roadmap (tiles by Stamen) or aerial photos 
 
 GeoJSON layers underneath the grid add context ( this example adds city limits and wards ).
 
-blockgrid.js stores Census data for tracts which overlap each grid square. You can generate this data using these two scripts in QGIS:
+blockgrid.js stores statistics for all Census blocks which overlap each grid square.
 
+<img src="http://i.imgur.com/NboEM.png"/>
+
+You can generate this data using these two scripts in QGIS:
 <ul>
 <li><a href="https://gist.github.com/3594805">Census2Grid.py</a></li>
 <li><a href="https://gist.github.com/3595104">BlockInfo.py</a></li>
