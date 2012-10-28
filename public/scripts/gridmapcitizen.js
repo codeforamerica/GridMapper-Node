@@ -116,10 +116,10 @@ function init(rep){
   baseIcon = L.Icon.extend({
     iconUrl: 'http://google-maps-icons.googlecode.com/files/blueA.png',
     shadowUrl: 'http://google-maps-icons.googlecode.com/files/shadow.png',
-    iconSize: new L.Point(20, 24),
-    shadowSize: new L.Point(30, 20),
-    iconAnchor: new L.Point(10, 12),
-    popupAnchor: new L.Point(0, -8)
+    iconSize: [20, 24],
+    shadowSize: [30, 20],
+    iconAnchor: [10, 12],
+    popupAnchor: [0, -8]
   });
   
   response.gridDataBase = response.gridDataBase.split("~");
