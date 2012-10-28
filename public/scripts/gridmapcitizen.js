@@ -114,7 +114,7 @@ function init(rep){
   gridSquares = [ ];
 
   /* set a base icon */
-  baseIcon = L.Icon.extend({
+  baseIcon = L.icon({
     iconUrl: 'http://google-maps-icons.googlecode.com/files/blueA.png',
     shadowUrl: 'http://google-maps-icons.googlecode.com/files/shadow.png',
     iconSize: [20, 24],
