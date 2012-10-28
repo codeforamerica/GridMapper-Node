@@ -78,8 +78,8 @@ function init(rep){
         layer.bindPopup( feature.properties.Description );
         wards.push(layer);
       }
-    },
-  }).addTo(map);
+    }
+  ).addTo(map);
 
   
   $("#countyLayer")[0].checked = true;
