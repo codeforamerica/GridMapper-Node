@@ -53,10 +53,11 @@ function init(rep){
   cloudmadeAttribution = response.tilecopyright;
   terrainLayer = new L.TileLayer(cloudmadeUrl, {maxZoom: 18, attribution: cloudmadeAttribution});
   var bing_key = "Arc0Uekwc6xUCJJgDA6Kv__AL_rvEh4Hcpj4nkyUmGTIx-SxMd52PPmsqKbvI_ce";
-  bingLayer = new L.TileLayer.Bing(bing_key, 'AerialWithLabels', {minZoom:10, maxZoom:19});
+  bingLayer = new L.BingLayer(bing_key);
   
   /* initialize the map div and center it */
   map = new L.Map('map');
+  map.attributionControl.setPrefix('');
   cityll = new L.LatLng(response.lat * 1.0, response.lng * 1.0);
   map.setView(cityll, response.zoom );//.addLayer(cloudmade);
   map.addLayer(bingLayer);
