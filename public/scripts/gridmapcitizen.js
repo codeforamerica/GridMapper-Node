@@ -56,7 +56,9 @@ function init(rep){
   bingLayer = new L.BingLayer(bing_key);
   
   /* initialize the map div and center it */
-  map = new L.Map('map');
+  map = new L.Map('map', { zoomControl: false, panControl: false });
+  L.control.pan().addTo(map);
+  L.control.zoom().addTo(map);
   map.attributionControl.setPrefix('');
   cityll = new L.LatLng(response.lat * 1.0, response.lng * 1.0);
   map.setView(cityll, response.zoom );//.addLayer(cloudmade);

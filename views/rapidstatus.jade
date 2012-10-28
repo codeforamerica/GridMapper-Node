@@ -2,10 +2,13 @@ head
   meta(charset='utf-8')
   title #{title}
   link(rel="stylesheet", href="/stylesheets/leaflet.css")
+  link(rel="stylesheet", href="/pancontrol/stylesheets/L.Control.Pan.css", type="text/css")
   // [if lte IE 8]
     link(rel='stylesheet', href='/stylesheets/leaflet.ie.css', type='text/css')
+    link(rel='stylesheet', href='/pancontrol/stylesheets/L.Control.Pan.ie.css', type='text/css')
   script(type="text/javascript", src="/scripts/leaflet.js")
   script(type="text/javascript", src="/scripts/tilelayer.bing.js")
+  script(type="text/javascript", src="/pancontrol/scripts/L.Control.Pan.js")
   script(type="text/javascript", src="/scripts/jquery.min.js")
   script(type="text/javascript", src="/scripts/bootstrap-modal.js")
   script(type="text/javascript", src="/scripts/bootstrap-dropdown.js")
